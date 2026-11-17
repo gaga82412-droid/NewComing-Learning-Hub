@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="card shadow-lg">
+
+    <div class="card-body">
+
+        <h1 class="text-primary">
+            {{ course.name }}
+        </h1>
+
+        <hr>
+
+        <h3>📖 Giới thiệu</h3>
+
+        <p>
+            {{ course.description }}
+        </p>
+
+        <hr>
+
+        <h3>📚 Nội dung môn học</h3>
+
+        <p>
+            {{ course.content|linebreaks }}
+        </p>
+
+        <hr>
+
+        <h3>🔗 Tài liệu tham khảo</h3>
+
+        <div class="list-group mb-4">
+
+        {% for resource in resources %}
+
+        <a href="{{ resource.link }}"
+        target="_blank"
+        class="list-group-item list-group-item-action">
+
+            📖 {{ resource.title }}
+
+        </a>
+
+        {% empty %}
+
+        <p>
+            Chưa có tài liệu.
+        </p>
+
+        {% endfor %}
+
+        </div>
+
+        <p>
+            {{ course.resource|linebreaks }}
+        </p>
+
+        <hr>
+
+        <h3>💼 Nghề nghiệp liên quan</h3>
+
+        <p>
+            {{ course.career|linebreaks }}
+        </p>
+
+        <hr>
+
+        <span class="badge bg-success">
+            Học kỳ {{ course.semester }}
+        </span>
+
+        <br><br>
+
+        <a href="/courses/"
+           class="btn btn-primary">
+
+            Quay lại
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}

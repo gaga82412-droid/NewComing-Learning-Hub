@@ -1,0 +1,153 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+
+    <div class="text-center mb-4">
+
+        <h2>🤖 NewComing AI Assistant</h2>
+
+        <p class="text-muted">
+            Trợ lý AI hỗ trợ học tập và lập trình
+        </p>
+
+    </div>
+
+    <div class="card shadow-sm">
+
+        <div
+            id="chatMessages"
+            class="card-body"
+            style="height:400px; overflow-y:auto;"
+        >
+
+            <div class="alert alert-info">
+                Xin chào! Mình có thể giúp bạn
+                giải đáp các câu hỏi học tập.
+            </div>
+
+        </div>
+
+        <div class="card-footer">
+
+            <form id="chatForm" class="d-flex gap-2">
+
+                {% csrf_token %}
+
+                <input
+                    type="text"
+                    id="messageInput"
+                    class="form-control"
+                    placeholder="Nhập câu hỏi..."
+                    required
+                >
+
+                <button
+                    type="submit"
+                    class="btn btn-primary"
+                    id="sendButton"
+                >
+                    Gửi
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+const form = document.getElementById("chatForm");
+const input = document.getElementById("messageInput");
+const messages = document.getElementById("chatMessages");
+const button = document.getElementById("sendButton");
+
+const csrfToken = document.querySelector(
+    '[name=csrfmiddlewaretoken]'
+).value;
+
+
+function addMessage(content, isUser) {
+
+    const div = document.createElement("div");
+
+    div.className = isUser
+        ? "alert alert-primary text-end"
+        : "alert alert-secondary";
+
+    div.style.whiteSpace = "pre-wrap";
+    div.textContent = content;
+
+    messages.appendChild(div);
+
+    messages.scrollTop = messages.scrollHeight;
+
+    return div;
+}
+
+
+form.addEventListener("submit", async function(event) {
+
+    event.preventDefault();
+
+    const message = input.value.trim();
+
+    if (!message) return;
+
+    addMessage(message, true);
+
+    input.value = "";
+
+    button.disabled = true;
+
+    const loading = addMessage(
+        "AI đang trả lời...",
+        false
+    );
+
+    try {
+
+        const response = await fetch(
+            "{% url 'chat:get_response' %}",
+            {
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRFToken": csrfToken
+                },
+
+                body: JSON.stringify({
+                    message: message
+                })
+            }
+        );
+
+        const data = await response.json();
+
+        loading.textContent =
+            data.reply || data.error || "Không có phản hồi.";
+
+    } catch (error) {
+
+        loading.textContent =
+            "Không thể kết nối đến máy chủ.";
+
+    } finally {
+
+        button.disabled = false;
+
+        messages.scrollTop = messages.scrollHeight;
+
+    }
+
+});
+
+</script>
+
+{% endblock %}

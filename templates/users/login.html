@@ -1,0 +1,70 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+    <div class="col-md-5">
+
+        <div class="card shadow mt-4">
+            <div class="card-header bg-primary text-white text-center py-3">
+                <h3 class="mb-0">Đăng nhập</h3>
+                <small>NewComing Learning Hub</small>
+            </div>
+
+            <div class="card-body p-4">
+
+                <p class="text-center text-muted">
+                    Chào mừng bạn quay trở lại!
+                </p>
+
+                <form method="POST">
+                    {% csrf_token %}
+
+                    {% if form.non_field_errors %}
+                        <div class="alert alert-danger">
+                            {{ form.non_field_errors }}
+                        </div>
+                    {% endif %}
+
+                    {% for field in form %}
+                        <div class="mb-3">
+
+                            <label class="form-label">
+                                {{ field.label }}
+                            </label>
+
+                            {{ field }}
+
+                            {% for error in field.errors %}
+                                <div class="text-danger small">
+                                    {{ error }}
+                                </div>
+                            {% endfor %}
+
+                        </div>
+                    {% endfor %}
+
+                    <button type="submit"
+                            class="btn btn-primary w-100">
+                        Đăng nhập
+                    </button>
+
+                </form>
+
+                <hr>
+
+                <p class="text-center mb-0">
+                    Chưa có tài khoản?
+                    <a href="{% url 'users:register' %}">
+                        Đăng ký ngay
+                    </a>
+                </p>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,259 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- Hero Section -->
+<section class="bg-primary text-white text-center p-5 rounded">
+    <h1 class="display-4 fw-bold">
+        Hệ Thống Hỗ Trợ Tân Sinh Viên CNTT
+    </h1>
+
+    <p class="lead mt-3">
+        Giúp sinh viên tìm hiểu chương trình đào tạo,
+        tiếp cận tài liệu học tập và định hướng nghề nghiệp
+        ngay từ năm nhất.
+    </p>
+
+    <a href="#courses" class="btn btn-light btn-lg mt-3">
+        Khám phá ngay
+    </a>
+</section>
+
+<!-- Giới thiệu -->
+<section class="mt-5">
+    <div class="text-center mb-4">
+        <h2>Tại sao nên sử dụng hệ thống?</h2>
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-body text-center">
+                    <h4>📚 Tìm hiểu môn học</h4>
+                    <p>
+                        Khám phá các môn học quan trọng như Python,
+                        Java, HTML/CSS, Cơ sở dữ liệu và nhiều môn khác.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mt-3 mt-md-0">
+            <div class="card shadow-sm h-100">
+                <div class="card-body text-center">
+                    <h4>🗺️ Lộ trình học tập</h4>
+                    <p>
+                        Định hướng lộ trình học tập từ năm nhất
+                        đến năm cuối một cách rõ ràng.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mt-3 mt-md-0">
+            <div class="card shadow-sm h-100">
+                <div class="card-body text-center">
+                    <h4>🚀 Định hướng nghề nghiệp</h4>
+                    <p>
+                        Tìm hiểu các vị trí việc làm trong ngành
+                        CNTT và những kỹ năng cần thiết.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- Môn học -->
+<section id="courses" class="mt-5">
+
+    <h2 class="text-center mb-4">
+        Các môn học nổi bật
+    </h2>
+
+    <div class="row">
+
+        <div class="col-md-4">
+            <div class="card shadow">
+                <div class="card-body">
+
+                    <h3>🐍 Python</h3>
+
+                    <p>
+                        Học lập trình cơ bản, xử lý dữ liệu,
+                        lập trình hướng đối tượng và phát triển web.
+                    </p>
+
+                    <a href="/courses/"
+                       class="btn btn-primary">
+
+                        Xem danh sách môn học
+
+                    </a>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mt-3 mt-md-0">
+            <div class="card shadow">
+                <div class="card-body">
+
+                    <h3>🌐 HTML & CSS</h3>
+
+                    <p>
+                        Xây dựng giao diện website,
+                        tạo bố cục và tối ưu trải nghiệm người dùng.
+                    </p>
+
+                    <a href="/courses/"
+                       class="btn btn-success">
+
+                        Xem danh sách môn học
+
+                    </a>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mt-3 mt-md-0">
+            <div class="card shadow">
+                <div class="card-body">
+
+                    <h3>☕ Java</h3>
+
+                    <p>
+                        Làm quen với lập trình hướng đối tượng,
+                        ứng dụng desktop và backend.
+                    </p>
+
+                    <a href="/courses/"
+                       class="btn btn-warning">
+
+                        Xem danh sách môn học
+
+                    </a>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="text-center mt-4">
+
+        <a href="/courses/"
+           class="btn btn-primary btn-lg">
+
+            📚 Xem tất cả môn học
+
+        </a>
+
+    </div>
+
+</section>
+<!-- Nghề nghiệp -->
+<section class="mt-5">
+
+    <h2 class="text-center mb-4">
+        Định hướng nghề nghiệp
+    </h2>
+
+    <div class="row">
+
+        <div class="col-md-3">
+            <div class="card h-100">
+                <div class="card-body text-center">
+                    <h5>Web Developer</h5>
+                    <p>
+                        Phát triển website và ứng dụng web.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card h-100">
+                <div class="card-body text-center">
+                    <h5>Backend Developer</h5>
+                    <p>
+                        Xây dựng API và xử lý dữ liệu phía server.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mt-3 mt-md-0">
+            <div class="card h-100">
+                <div class="card-body text-center">
+                    <h5>Data Analyst</h5>
+                    <p>
+                        Phân tích dữ liệu và trực quan hóa thông tin.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mt-3 mt-md-0">
+            <div class="card h-100">
+                <div class="card-body text-center">
+                    <h5>AI Engineer</h5>
+                    <p>
+                        Phát triển các hệ thống AI và Machine Learning.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Thống kê -->
+<section class="mt-5">
+
+    <div class="row text-center">
+
+        <div class="col-md-4">
+            <div class="bg-light p-4 rounded shadow-sm">
+                <h1 class="text-primary">20+</h1>
+                <p>Môn học tham khảo</p>
+            </div>
+        </div>
+
+        <div class="col-md-4 mt-3 mt-md-0">
+            <div class="bg-light p-4 rounded shadow-sm">
+                <h1 class="text-success">100+</h1>
+                <p>Tài liệu học tập</p>
+            </div>
+        </div>
+
+        <div class="col-md-4 mt-3 mt-md-0">
+            <div class="bg-light p-4 rounded shadow-sm">
+                <h1 class="text-danger">10+</h1>
+                <p>Lộ trình nghề nghiệp</p>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Footer -->
+<footer class="mt-5 bg-dark text-white text-center p-4 rounded">
+    <h5>SVN2 Learning Hub</h5>
+
+    <p>
+        Hỗ trợ tân sinh viên CNTT tiếp cận kiến thức
+        và định hướng nghề nghiệp hiệu quả.
+    </p>
+
+    <p>
+        © 2026 - Đồ án Python Django
+    </p>
+</footer>
+
+{% endblock %}

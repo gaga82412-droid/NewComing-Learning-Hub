@@ -1,0 +1,43 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="card shadow-sm mx-auto" style="max-width: 600px;">
+        <div class="card-body text-center p-4">
+            <h2 class="mb-3">Kết quả bài làm</h2>
+
+            <h4>{{ attempt.quiz.title }}</h4>
+
+            <div class="my-4">
+                <h1 class="display-3 text-primary">
+                    {{ attempt.score }}/10
+                </h1>
+                <p class="text-muted">Điểm số của bạn</p>
+            </div>
+
+            <p>
+                Số câu trả lời đúng:
+                <strong>
+                    {{ attempt.correct_answers }}/{{ attempt.total_questions }}
+                </strong>
+            </p>
+
+            <p>
+                Thời gian hoàn thành:
+                {{ attempt.completed_at|date:"d/m/Y H:i" }}
+            </p>
+
+            <a href="{% url 'learning:quiz_list' %}"
+               class="btn btn-primary mt-3">
+                Làm bài khác
+            </a>
+
+            <a href="{% url 'learning:dashboard' %}"
+               class="btn btn-outline-secondary mt-3">
+                Dashboard
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

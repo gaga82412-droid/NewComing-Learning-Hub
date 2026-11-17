@@ -1,0 +1,72 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+
+        <div class="card shadow mt-3">
+
+            <div class="card-header bg-success text-white text-center py-3">
+                <h3 class="mb-0">Tạo tài khoản</h3>
+                <small>Tham gia NewComing Learning Hub</small>
+            </div>
+
+            <div class="card-body p-4">
+
+                <p class="text-center text-muted">
+                    Đăng ký để sử dụng các chức năng học tập.
+                </p>
+
+                <form method="POST">
+                    {% csrf_token %}
+
+                    {% for field in form %}
+                        <div class="mb-3">
+
+                            <label class="form-label">
+                                {{ field.label }}
+                            </label>
+
+                            {{ field }}
+
+                            {% if field.help_text %}
+                                <div class="form-text">
+                                    {{ field.help_text }}
+                                </div>
+                            {% endif %}
+
+                            {% for error in field.errors %}
+                                <div class="text-danger small">
+                                    {{ error }}
+                                </div>
+                            {% endfor %}
+
+                        </div>
+                    {% endfor %}
+
+                    <button type="submit"
+                            class="btn btn-success w-100">
+                        Đăng ký tài khoản
+                    </button>
+
+                </form>
+
+                <hr>
+
+                <p class="text-center mb-0">
+                    Đã có tài khoản?
+                    <a href="{% url 'users:login' %}">
+                        Đăng nhập
+                    </a>
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

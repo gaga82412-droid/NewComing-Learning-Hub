@@ -1,0 +1,79 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container py-4">
+    <h2 class="mb-4">Dashboard học tập</h2>
+
+    <div class="row g-3 mb-4">
+        <div class="col-md-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <h6 class="text-muted">Bài trắc nghiệm</h6>
+                    <h2>{{ total_quizzes }}</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <h6 class="text-muted">Lượt làm bài</h6>
+                    <h2>{{ total_attempts }}</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <h6 class="text-muted">Điểm trung bình</h6>
+                    <h2>{{ average_score }}/10</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h5 class="mb-3">Lịch sử làm bài gần đây</h5>
+
+            {% if recent_attempts %}
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle">
+                        <thead>
+                            <tr>
+                                <th>Bài trắc nghiệm</th>
+                                <th>Điểm</th>
+                                <th>Kết quả</th>
+                                <th>Thời gian</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for attempt in recent_attempts %}
+                            <tr>
+                                <td>{{ attempt.quiz.title }}</td>
+                                <td>{{ attempt.score }}/10</td>
+                                <td>
+                                    {{ attempt.correct_answers }}/{{ attempt.total_questions }}
+                                </td>
+                                <td>{{ attempt.completed_at|date:"d/m/Y H:i" }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <p class="text-muted mb-0">
+                    Bạn chưa hoàn thành bài trắc nghiệm nào.
+                </p>
+            {% endif %}
+
+            <a href="{% url 'learning:quiz_list' %}"
+               class="btn btn-primary mt-3">
+                Bắt đầu luyện tập
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
